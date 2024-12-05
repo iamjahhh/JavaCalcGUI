@@ -4,11 +4,9 @@ import java.util.List;
 
 public class HistoryManager {
     private List<CalculationHistory> history = new ArrayList<>();
-    private static final String FILE_NAME = "history.txt";
-    private static final int MAX_HISTORY_SIZE = 50;
 
     public void addHistory(String query, String result) {
-        if (history.size() >= MAX_HISTORY_SIZE) 
+        if (history.size() >= 50) 
             history.remove(0);
             
         history.add(new CalculationHistory(query, result, ""));
@@ -16,18 +14,17 @@ public class HistoryManager {
     }
 
     public void saveHistoryToFile() {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("./JavaCalcGUI/history.txt"))) {
             for (CalculationHistory entry : history) {
                 writer.write(entry.toString());
                 writer.newLine();
             }
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
     public void loadHistoryFromFile() {
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("./JavaCalcGUI/history.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.replace("{", "").replace("}", "").split(", \"");
@@ -37,7 +34,6 @@ public class HistoryManager {
                 history.add(new CalculationHistory(query, result, dateTime));
             }
         } catch (IOException e) {
-            e.printStackTrace();
         }
     }        
 

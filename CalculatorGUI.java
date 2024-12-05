@@ -9,7 +9,7 @@ import java.util.List;
 public class CalculatorGUI {
 	private static HistoryManager historyManager = new HistoryManager();
 
-	static JFrame frame = new JFrame("Jah's Calculator");
+	static JFrame frame = new JFrame("Formulator");
 	static JFrame historyFrame = new JFrame("Calculation History");
 
 	static JPanel historyPanel = new JPanel();
@@ -36,15 +36,8 @@ public class CalculatorGUI {
 		SetButtons();
 		SetListeners();
 
-		ImageIcon img = new ImageIcon("C:\\Users\\johnb\\OneDrive\\Desktop\\QCU\\CC101\\calc.png");
+		ImageIcon img = new ImageIcon("./JavaCalcGUI/calcIcon.png");
 		frame.setIconImage(img.getImage());
-
-		/*
-		 * Icon imgIcon = new ImageIcon(
-		 * "C:\\Users\\johnb\\OneDrive\\Desktop\\Jah\\penis-swinging-balls.gif"); JLabel
-		 * label = new JLabel(imgIcon); label.setBounds(55, 380, 220, 220); // for
-		 * example, you can use your own values frame.add(label);
-		 */
 
 		frame.setFocusable(true);
 		frame.requestFocusInWindow();

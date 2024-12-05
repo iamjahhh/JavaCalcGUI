@@ -17,12 +17,10 @@ public class CalculationHistory {
         return formatter.format(new Date());
     }
 
-    @Override
     public String toString() {
         return String.format("{\"query\":\"%s\", \"result\":\"%s\", \"dateTime\":\"%s\"}", query, result, dateTime);
     }
 
-    // Getters
     public String getQuery() {
         return query;
     }
